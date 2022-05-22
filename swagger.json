@@ -1,0 +1,70 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Exchange Currencies API",
+        "description": "",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/",
+            "description": "Local server"
+        }
+    ],
+    "paths": {
+        "/exchange": {
+            "get": {
+                "summary": "Calculate amount by exchange rate",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "originCurrency",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "targetCurrency",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A string of equivalent amount in target currency"
+                    }
+                }
+            }
+        },
+        "/loadrates": {
+            "post": {
+                "summary": "Upload exchanging rate to cache",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "currencies",
+                        "in": "body",
+                        "description": "e.g. { \"currencies\": { \"TWD\": \"TWD\": 1, \"JPY\": 3.669, \"USD\": 0.03281 } }",
+                        "required": true,
+                        "type": "object"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    }
+}
